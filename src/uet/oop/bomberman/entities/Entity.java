@@ -8,11 +8,17 @@ import javafx.scene.paint.Color;
 import uet.oop.bomberman.graphics.Sprite;
 
 public abstract class Entity {
+
+    public static final int WIDTH = 20;
+    public static final int HEIGHT = 15;
     //Tọa độ X tính từ góc trái trên trong Canvas
     protected int x;
 
     //Tọa độ Y tính từ góc trái trên trong Canvas
     protected int y;
+
+    // 0 : up, 1 : right, 2: down, 3 : left
+    protected int direct;
 
     protected Image img;
 

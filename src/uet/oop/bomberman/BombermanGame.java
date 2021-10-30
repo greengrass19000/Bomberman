@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
-import uet.oop.bomberman.entities.Bomber;
+import uet.oop.bomberman.entities.movingentities.Bomber;
 import uet.oop.bomberman.entities.Entity;
-import uet.oop.bomberman.entities.Grass;
-import uet.oop.bomberman.entities.Wall;
+import uet.oop.bomberman.entities.notmovingentities.Grass;
+import uet.oop.bomberman.entities.notmovingentities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
 
 import java.util.ArrayList;
@@ -67,12 +67,14 @@ public class BombermanGame extends Application {
         for (int i = 0; i < WIDTH; i++) {
             for (int j = 0; j < HEIGHT; j++) {
                 Entity object;
-                if (j == 0 || j == HEIGHT - 1 || i == 0 || i == WIDTH - 1) {
+                if (j == 0 || j == HEIGHT - 1 || i == 0 || i == WIDTH - 1 || (i  % 2 == 0 && j % 2 == 0)) {
+                    //TODO : Complete the map.
                     object = new Wall(i, j, Sprite.wall.getFxImage());
                 }
                 else {
                     object = new Grass(i, j, Sprite.grass.getFxImage());
                 }
+                //TODO : Some other entities would be rendered here.
                 stillObjects.add(object);
             }
         }

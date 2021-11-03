@@ -17,7 +17,9 @@ public class Keyboard implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) {
+		System.out.println("Typed");
+	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
@@ -29,6 +31,10 @@ public class Keyboard implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		keys[e.getKeyCode()] = false;
 		
+	}
+
+	public void active() {
+
 	}
 
 }

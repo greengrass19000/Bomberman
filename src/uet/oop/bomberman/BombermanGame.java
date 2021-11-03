@@ -13,6 +13,8 @@ import uet.oop.bomberman.entities.notmovingentities.Grass;
 import uet.oop.bomberman.entities.notmovingentities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
 
+import uet.oop.bomberman.input.Keyboard;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +50,7 @@ public class BombermanGame extends Application {
         stage.setScene(scene);
         stage.show();
 
+        // Test KeyListener
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {

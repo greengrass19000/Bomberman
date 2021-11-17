@@ -1,7 +1,7 @@
 package uet.oop.bomberman.entities.movingentities;
 
 import uet.oop.bomberman.entities.MovingEntity;
-import uet.oop.bomberman.input.Keyboard;
+import uet.oop.bomberman.BombermanGame;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
@@ -9,15 +9,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 
+import java.awt.Canvas;
+
 
 public class Bomber extends MovingEntity {
-    protected Keyboard input;
 
     public Bomber(int x, int y, Image img) {
         super(x, y, img);
-        input = new Keyboard();
-        //This is for testing
-        //input = getInput();
     }
 
     @Override
@@ -27,7 +25,7 @@ public class Bomber extends MovingEntity {
 
     protected void movement() {
         int xa = 0, ya = 0;
-        if (input.up) ya--;
+        if (isUp()) ya--;
         if (input.down) ya++;
         if (input.left) xa--;
         if (input.right) xa++;
@@ -46,7 +44,7 @@ public class Bomber extends MovingEntity {
     }
 
     public boolean canMove(double x, double y) {
-        //Todo: Decide when it can move and while it can't as well.
+        //Todo: Decide when it can move and when it can't as well.
         if (x < 0 || y < 0 || x > WIDTH * 32 || y > HEIGHT * 32) {
            return false;
         }

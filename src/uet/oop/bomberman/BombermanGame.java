@@ -12,6 +12,8 @@ import uet.oop.bomberman.entities.Entity;
 import uet.oop.bomberman.entities.notmovingentities.Grass;
 import uet.oop.bomberman.entities.notmovingentities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
+import javafx.scene.input.KeyEvent;
+import javafx.event.EventHandler;
 
 import uet.oop.bomberman.input.Keyboard;
 
@@ -27,7 +29,27 @@ public class BombermanGame extends Application {
     private Canvas canvas;
     private List<Entity> entities = new ArrayList<>();
     private List<Entity> stillObjects = new ArrayList<>();
+    private boolean up, down, left, right, bombSetting;
 
+    public boolean isBombSetting() {
+        return bombSetting;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public boolean isUp() {
+        return up;
+    }
 
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
@@ -45,6 +67,29 @@ public class BombermanGame extends Application {
 
         // Tao scene
         Scene scene = new Scene(root);
+        // Listen to the input
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case UP:
+                    case W:
+                        up = true; break;
+                    case DOWN:
+                    case S:
+                        down = true; break;
+                    case LEFT:
+                    case A:
+                        left  = true; break;
+                    case RIGHT:
+                    case D:
+                        right  = true; break;
+                    case SPACE:
+                    case ENTER:
+                        bombSetting = true; break;
+                }
+            }
+        });
 
         // Them scene vao stage
         stage.setScene(scene);

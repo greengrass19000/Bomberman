@@ -29,27 +29,6 @@ public class BombermanGame extends Application {
     private Canvas canvas;
     private List<Entity> entities = new ArrayList<>();
     private List<Entity> stillObjects = new ArrayList<>();
-    private boolean up, down, left, right, bombSetting;
-
-    public boolean isBombSetting() {
-        return bombSetting;
-    }
-
-    public boolean isDown() {
-        return down;
-    }
-
-    public boolean isLeft() {
-        return left;
-    }
-
-    public boolean isRight() {
-        return right;
-    }
-
-    public boolean isUp() {
-        return up;
-    }
 
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
@@ -66,33 +45,12 @@ public class BombermanGame extends Application {
         root.getChildren().add(canvas);
 
         // Tao scene
-        Scene scene = new Scene(root);
-        // Listen to the input
-        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:
-                    case W:
-                        up = true; break;
-                    case DOWN:
-                    case S:
-                        down = true; break;
-                    case LEFT:
-                    case A:
-                        left  = true; break;
-                    case RIGHT:
-                    case D:
-                        right  = true; break;
-                    case SPACE:
-                    case ENTER:
-                        bombSetting = true; break;
-                }
-            }
-        });
+        Board board = new Board(root);
+
+
 
         // Them scene vao stage
-        stage.setScene(scene);
+        stage.setScene(board.getScene());
         stage.show();
 
         // Test KeyListener
@@ -108,6 +66,7 @@ public class BombermanGame extends Application {
         createMap();
 
         Entity bomberman = new Bomber(1, 1, Sprite.player_right.getFxImage());
+        board.initializeInput((Bomber) bomberman);
         entities.add(bomberman);
     }
 

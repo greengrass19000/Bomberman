@@ -1,10 +1,7 @@
 package uet.oop.bomberman.entities;
 
-import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import uet.oop.bomberman.graphics.Sprite;
 
 public abstract class Entity {
@@ -18,7 +15,7 @@ public abstract class Entity {
     protected int y;
 
     // 0 : up, 1 : right, 2: down, 3 : left
-    protected int direct;
+    protected int direction;
 
     protected Image img;
 

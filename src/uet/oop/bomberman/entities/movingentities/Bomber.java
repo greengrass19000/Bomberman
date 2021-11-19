@@ -66,8 +66,14 @@ public class Bomber extends MovingEntity {
         }
         //Todo: Làm nhân vật bị cản
         System.out.print(((int)(x) % 64)+ " " + ((int)y) % 64 + '\n');
-        if(((((int)(x) % 64) < 32) && (((int)y) % 64 > 32)) || ((((int)(x + 11) % 64) < 32) && (((int)y + 49) % 64 > 32))){
+        /**if(((((int)(x) % 64) < 32) && (((int)y) % 64 > 32)) || ((((int)(x + 11) % 64) < 32) && (((int)y + 49) % 64 > 32))){
             return false;
+        }*/
+        if(y % 64 != 32) {
+            //TODO: Make the character can slide
+            if(x % 64 < 32 || x % 64 > 41) {
+                return false;
+            }
         }
         return true;
     }

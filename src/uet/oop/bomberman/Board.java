@@ -14,7 +14,7 @@ public class Board {
 
         public Board(Group root) {
                 scene = new Scene(root);
-                // Listen to the input
+                // Listen to the input\
 
         }
 

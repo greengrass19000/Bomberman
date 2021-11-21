@@ -15,7 +15,7 @@ import uet.oop.bomberman.graphics.Sprite;
 import javafx.scene.input.KeyEvent;
 import javafx.event.EventHandler;
 
-import uet.oop.bomberman.input.Keyboard;
+import uet.oop.bomberman.sound.Sound;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +29,7 @@ public class BombermanGame extends Application {
     private Canvas canvas;
     private List<Entity> entities = new ArrayList<>();
     private List<Entity> stillObjects = new ArrayList<>();
+    public Sound sound;
 
     public static void main(String[] args) {
         Application.launch(BombermanGame.class);
@@ -46,7 +47,6 @@ public class BombermanGame extends Application {
 
         // Tao scene
         Board board = new Board(root);
-
 
 
         // Them scene vao stage

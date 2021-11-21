@@ -4,6 +4,8 @@ import uet.oop.bomberman.entities.MovingEntity;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.graphics.Sprite;
 
+import static uet.oop.bomberman.sound.Sound.play;
+
 
 public class Bomber extends MovingEntity {
 
@@ -65,13 +67,10 @@ public class Bomber extends MovingEntity {
            return false;
         }
         //Todo: Làm nhân vật bị cản
-        System.out.print(((int)(x) % 64)+ " " + ((int)y) % 64 + '\n');
-        /**if(((((int)(x) % 64) < 32) && (((int)y) % 64 > 32)) || ((((int)(x + 11) % 64) < 32) && (((int)y + 49) % 64 > 32))){
-            return false;
-        }*/
-        if(y % 64 != 32) {
+        //System.out.print(((int)(x) % 64)+ " " + ((int)y) % 64 + '\n');
+        if (y % 64 != 32) {
             //TODO: Make the character can slide
-            if(x % 64 < 32 || x % 64 > 41) {
+            if (x % 64 < 32 || x % 64 > 41) {
                 return false;
             }
         }
@@ -86,6 +85,7 @@ public class Bomber extends MovingEntity {
         if (ya < 0) direction = 0;
         y += ya;
         x += xa;
+        play();
         //TODO Make the bomber slide
     }
 

@@ -1,0 +1,1 @@
+Có thể sẽ phải thêm extension wav ở phần (Settings > Build, Execution, Deployment > Compiler > Resource patterns)

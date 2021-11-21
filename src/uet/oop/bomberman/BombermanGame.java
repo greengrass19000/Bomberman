@@ -3,18 +3,14 @@ package uet.oop.bomberman;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.stage.Stage;
-import uet.oop.bomberman.entities.movingentities.Bomber;
 import uet.oop.bomberman.entities.Entity;
+import uet.oop.bomberman.entities.movingentities.Bomber;
 import uet.oop.bomberman.entities.notmovingentities.Grass;
 import uet.oop.bomberman.entities.notmovingentities.Wall;
 import uet.oop.bomberman.graphics.Sprite;
-import javafx.scene.input.KeyEvent;
-import javafx.event.EventHandler;
-
 import uet.oop.bomberman.sound.Sound;
 
 import java.util.ArrayList;

@@ -4,7 +4,8 @@ import uet.oop.bomberman.entities.MovingEntity;
 import javafx.scene.image.Image;
 import uet.oop.bomberman.graphics.Sprite;
 
-import static uet.oop.bomberman.sound.Sound.play;
+import uet.oop.bomberman.sound.Sound;
+//import final uet.oop.bomberman.sound.Sound.stop;
 
 
 public class Bomber extends MovingEntity {
@@ -47,17 +48,29 @@ public class Bomber extends MovingEntity {
         if (down) ya++;
         if (left) xa--;
         if (right) xa++;
-
+        if (xa != 0 || ya != 0) {
+            moving = true;
+            changeDirection(xa, ya);
+            //play("horizonalmove");
+        } else {
+            moving = false;
+        }
         //This's just for testing
-        if(!canMove(x + xa, y + ya))
+        if(!canMove(x + xa, y + ya)) {
+            //stop("horizonalmove");
             return;
+        }
+
 
         if (xa != 0 || ya != 0) {
             //Todo: Change the bomber's speed after obtaining the "speed" ability.
+            changeDirection(xa, ya);
             move(xa, ya);
+            //play("horizonalmove");
             moving = true;
         } else {
             moving = false;
+            //stop("horizonalmove");
         }
     }
 
@@ -76,16 +89,17 @@ public class Bomber extends MovingEntity {
         }
         return true;
     }
-
-    @Override
-    public void move(double xa, double ya) {
+    public void changeDirection(double xa, double ya) {
         if (xa > 0) direction = 1;
         if (xa < 0) direction = 3;
         if (ya > 0) direction = 2;
         if (ya < 0) direction = 0;
+    }
+
+    @Override
+    public void move(double xa, double ya) {
         y += ya;
         x += xa;
-        play();
         //TODO Make the bomber slide
     }
 

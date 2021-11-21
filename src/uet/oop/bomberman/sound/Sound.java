@@ -10,21 +10,39 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
-public class Sound {
-    public static void play() {
-        try {
-            //AudioClip player = new AudioClip(Sound.class.getResource("sound/" + sound + ".wav").toExternalForm());
-            //AudioClip player = new AudioClip(Sound.class.getClassLoader().getResource("ace.wav").toExternalForm());
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 
-            Sound obj = new Sound();
-            Class class1 = obj.getClass();
-            URL url = class1.getResource("/src/uet/oop/bomberman/sound/inp.txt");
-            System.out.println(url);
-            //Absolute path : "D:/Desktop/Bomberman/src/uet/oop/bomberman/sound/horizonalmove.wav"
-            //System.out.println(u.toString());
-            //player.play();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+public class Sound {
+    public static void play(String sound) {
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                            Sound.class.getResourceAsStream("/sound/" + sound + ".wav"));
+                    clip.open(inputStream);
+                    clip.start();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
+    }
+    public static void stop(String sound){
+        new Thread(new Runnable() {
+            public void run() {
+                try {
+                    Clip clip = AudioSystem.getClip();
+                    AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                            Sound.class.getResourceAsStream("/sound/" + sound + ".wav"));
+                    clip.open(inputStream);
+                    clip.stop();
+                } catch (Exception e) {
+                    System.err.println(e.getMessage());
+                }
+            }
+        }).start();
     }
 }

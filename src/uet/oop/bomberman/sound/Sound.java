@@ -19,7 +19,7 @@ public class Sound {
 
             Sound obj = new Sound();
             Class class1 = obj.getClass();
-            URL url = class1.getResource("/src/uet/oop/bomberman/sound/inp.txt");
+            URL url = class1.getResource("/src/uet/oop/bomberman/sound/ace.wav");
             System.out.println(url);
             //Absolute path : "D:/Desktop/Bomberman/src/uet/oop/bomberman/sound/horizonalmove.wav"
             //System.out.println(u.toString());

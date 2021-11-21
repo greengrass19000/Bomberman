@@ -9,7 +9,6 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
-import uet.oop.bomberman.BombermanGame;
 
 public class Sound {
     public static void play() {

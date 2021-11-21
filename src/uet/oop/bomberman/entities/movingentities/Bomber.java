@@ -70,7 +70,7 @@ public class Bomber extends MovingEntity {
         //System.out.print(((int)(x) % 64)+ " " + ((int)y) % 64 + '\n');
         if (y % 64 != 32) {
             //TODO: Make the character can slide
-            if (x % 64 < 32 || x % 64 > 41) {
+            if (x % 64 < 32 || x % 64 > 40) {
                 return false;
             }
         }

@@ -79,29 +79,42 @@ public class Bomber extends MovingEntity {
         }
     }
     //Make the character can slide
-    public boolean canMove2(double x, double y, double a) {
-        /**if((y % 64 < 29) {
-            if(x % 64 < 29) {
+    public boolean canMove2(double xa, double ya, double a) {
+        if (xa < 32 || ya < 32 || xa > (WIDTH - 2) * 32 || ya > (HEIGHT - 2) * 32) {
+            return false;
+        }
+        double tmpy = ya % 64;
+        double tmpx = xa % 64;
+        if (tmpy > 22 && tmpy < 32) {
+            if(tmpx > 22 && tmpx < 50) {
                 ++y;
                 return true;
             }
-            if(x % 64 > 43) {
+            if(x % 64 < 45) {
                 ++y;
-                return false;
+                return true;
             }
             return false;
         }
-        if((y % 64 > 35) {
-            if(x % 64 < 29) {
+        if (tmpy > 32 && tmpy < 42) {
+            if(tmpx > 22 && tmpx < 50) {
                 --y;
                 return true;
             }
-            if(x % 64 > 43) {
+            if (tmpx < 50) {
                 --y;
-                return false;
+                return true;
             }
             return false;
-        }*/
+        }
+        if(tmpx > 22 && tmpx < 32) {
+            ++x;
+            return true;
+        }
+        if(tmpx > 32 && tmpx < 50) {
+            --x;
+            return true;
+        }
         return false;
     }
 
@@ -143,12 +156,6 @@ public class Bomber extends MovingEntity {
                 img = Sprite.player_up.getFxImage();
                 if (moving) {
                     img = Sprite.movingSprite(Sprite.player_up_1, Sprite.player_up_2, animate, 20).getFxImage();
-                }
-                break;
-            case 1:
-                img = Sprite.player_right.getFxImage();
-                if (moving) {
-                    img = Sprite.movingSprite(Sprite.player_right_1, Sprite.player_right_2, animate, 20).getFxImage();
                 }
                 break;
             case 2:

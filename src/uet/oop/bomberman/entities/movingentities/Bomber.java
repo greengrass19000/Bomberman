@@ -80,7 +80,7 @@ public class Bomber extends MovingEntity {
     }
     //Make the character can slide
     public boolean canMove2(double x, double y, double a) {
-        if((y % 64 < 29) {
+        /**if((y % 64 < 29) {
             if(x % 64 < 29) {
                 ++y;
                 return true;
@@ -101,8 +101,8 @@ public class Bomber extends MovingEntity {
                 return false;
             }
             return false;
-        }
-
+        }*/
+        return false;
     }
 
     public boolean canMove(double x, double y) {

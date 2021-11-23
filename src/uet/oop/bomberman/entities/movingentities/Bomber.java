@@ -1,11 +1,10 @@
 package uet.oop.bomberman.entities.movingentities;
 
-import uet.oop.bomberman.entities.MovingEntity;
 import javafx.scene.image.Image;
+import uet.oop.bomberman.entities.MovingEntity;
 import uet.oop.bomberman.graphics.Sprite;
 
 import uet.oop.bomberman.sound.Sound;
-//import final uet.oop.bomberman.sound.Sound.stop;
 
 
 public class Bomber extends MovingEntity {
@@ -51,27 +50,59 @@ public class Bomber extends MovingEntity {
         if (xa != 0 || ya != 0) {
             moving = true;
             changeDirection(xa, ya);
-            //play("horizonalmove");
+            if(direction == 0 || direction == 2) {
+                if(animate % 20 == 0)
+                    Sound.play("verticalmove");
+            } else {
+                if (animate % 20 == 0)
+                    Sound.play("horizonalmove");
+            }
         } else {
-            moving = false;
+            if(moving) {
+                Sound.stop("verticalmove");
+                Sound.stop("horizonalmove");
+                moving = false;
+            }
         }
         //This's just for testing
         if(!canMove(x + xa, y + ya)) {
-            //stop("horizonalmove");
-            return;
+            if(!canMove2(x + xa, y, xa) && !canMove2(x, y + ya, xa)) {
+                return;
+            }
         }
 
 
         if (xa != 0 || ya != 0) {
             //Todo: Change the bomber's speed after obtaining the "speed" ability.
-            changeDirection(xa, ya);
             move(xa, ya);
-            //play("horizonalmove");
             moving = true;
-        } else {
-            moving = false;
-            //stop("horizonalmove");
         }
+    }
+    //Make the character can slide
+    public boolean canMove2(double x, double y, double a) {
+        if((y % 64 < 29) {
+            if(x % 64 < 29) {
+                ++y;
+                return true;
+            }
+            if(x % 64 > 43) {
+                ++y;
+                return false;
+            }
+            return false;
+        }
+        if((y % 64 > 35) {
+            if(x % 64 < 29) {
+                --y;
+                return true;
+            }
+            if(x % 64 > 43) {
+                --y;
+                return false;
+            }
+            return false;
+        }
+
     }
 
     public boolean canMove(double x, double y) {
@@ -98,9 +129,12 @@ public class Bomber extends MovingEntity {
 
     @Override
     public void move(double xa, double ya) {
+        //TODO Make the bomber slide
         y += ya;
         x += xa;
-        //TODO Make the bomber slide
+        if(animate % 20 == 0) {
+            Sound.play("horizonalmove");
+        }
     }
 
     private void chooseSprite() {
